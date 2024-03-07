@@ -12,6 +12,8 @@ explore:
  diffferent NAS parameters
  different loss functions
  different way to calculate accuracy
+ boundary conditions
 
+explore more equations simple
 ________________________________ 
  conv lstm radar
