@@ -5,3 +5,13 @@ redo input data and output data config
 add cfl
 add loss for mass conservation
 maybe more resolution
+
+_____________________________
+change in ux and uy --> trainable
+explore:
+ diffferent NAS parameters
+ different loss functions
+ different way to calculate accuracy
+
+________________________________ 
+ conv lstm radar
