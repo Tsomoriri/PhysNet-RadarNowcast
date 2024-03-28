@@ -1,55 +1,61 @@
-# Meeting Minutes for [Meeting Title]
+# Meeting Minutes for PhysNet-RadarNowcast Progress Discussion
 
 ## Meeting Details
 
-- **Date:** YYYY-MM-DD
-- **Time:** HH:MM AM/PM - HH:MM AM/PM
-- **Location:** [Meeting Location or Virtual Meeting Link]
-- **Facilitator:** [Name of the Meeting Facilitator]
-- **Note Taker:** [Name of the person taking notes]
+- **Date:** 2024-03-15
+- **Time:** 10:00 AM - 11:30 AM
+- **Location:** Virtual Meeting (Zoom)
+- **Facilitator:** Stefan
+- **Note Taker:** Sushen
 
 ## Attendees
 
 - Present:
-  - [Name] - [Role or Department]
-  - [Name] - [Role or Department]
+  - Sushen - Student/Researcher
+  - Stefan -  Research scientist/Lead
+  - IS - Module Convener
 - Apologies:
-  - [Name] - [Role or Department]
-  - [Name] - [Role or Department]
+  - None
 
 ## Agenda Items
 
-1. **[Agenda Item]** - _[Presenter/Lead]_
+1. **Review of Current Progress** - _Sushen_
    - Discussion Points:
-     - Point 1
-     - Point 2
+     - Redoing input and output data configuration.
+     - Adding CFL condition to the model.
+     - Incorporating loss for mass conservation.
+     - Considering higher resolution for the model.
    - Action Items:
-     - [Action Item] - [Responsible Person], [Due Date]
+     - [Sushen] Explore making `ux` and `uy` trainable, due by next meeting.
 
-2. **[Agenda Item]** - _[Presenter/Lead]_
+2. **Future Directions** - _Sushen_
    - Discussion Points:
-     - Point 1
-     - Point 2
+     - Exploring different NAS parameters.
+     - Investigating various loss functions.
+     - Different methods to calculate accuracy.
+     - Examining boundary conditions.
+     - Simpler equations exploration for Conv LSTM radar application.
    - Action Items:
-     - [Action Item] - [Responsible Person], [Due Date]
+     - [Sushen] Research and implement the discussed directions, ongoing.
 
 ## Decisions Made
 
-- [Decision 1]: [Brief description of the decision, who made it, and any relevant details]
-- [Decision 2]: [Brief description of the decision, who made it, and any relevant details]
+- Agreed to focus on making `ux` and `uy` parameters trainable for the next phase.
+- Decided to explore a variety of NAS parameters and loss functions to enhance model performance.
 
 ## Action Items
 
-- [ ] **[Action Item 1]:** [Responsible Person] - [Due Date]
-- [ ] **[Action Item 2]:** [Responsible Person] - [Due Date]
+- [ ] **Make `ux` and `uy` trainable:** Sushen - Due by next meeting.
+- [ ] **Explore different NAS parameters and loss functions:** Sushen - Ongoing.
 
 ## Additional Notes
 
-- [Any additional information discussed during the meeting, or observations noted by the attendees or facilitator.]
+- Stefan and IS emphasized the importance of exploring new parameters and methods to push the boundaries of the current model.
+- The possibility of adding more resolution was discussed, but it will be revisited after assessing the feasibility and computational costs.
 
 ## Next Meeting
 
-- **Date:** YYYY-MM-DD
-- **Time:** HH:MM AM/PM
-- **Location:** [Location or Link]
-- **Agenda:** [Brief overview of what will be covered in the next meeting]
+- **Date:** To be decided.
+- **Time:** To be decided.
+- **Location:** Virtual Meeting (Zoom)
+- **Agenda:** Review of the implemented changes and discussion on the results.

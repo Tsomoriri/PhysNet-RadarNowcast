@@ -1,55 +1,67 @@
-# Meeting Minutes for [Meeting Title]
+# Meeting Minutes for Follow-Up on PhysNet-RadarNowcast
 
 ## Meeting Details
 
-- **Date:** YYYY-MM-DD
-- **Time:** HH:MM AM/PM - HH:MM AM/PM
-- **Location:** [Meeting Location or Virtual Meeting Link]
-- **Facilitator:** [Name of the Meeting Facilitator]
-- **Note Taker:** [Name of the person taking notes]
+- **Date:** 2024-03-26
+- **Time:** 2:00 PM - 3:30 PM
+- **Location:** Virtual Meeting (Zoom)
+- **Facilitator:** IS
+- **Note Taker:** Sushen
 
 ## Attendees
 
 - Present:
-  - [Name] - [Role or Department]
-  - [Name] - [Role or Department]
+  - Sushen - Student/Researcher
+  - IS - Module Convener
 - Apologies:
-  - [Name] - [Role or Department]
-  - [Name] - [Role or Department]
+  - Stefan -  Research scientist/Lead
 
 ## Agenda Items
 
-1. **[Agenda Item]** - _[Presenter/Lead]_
+1. **Conv LSTM Review** - _Sushen_
    - Discussion Points:
-     - Point 1
-     - Point 2
+     - Understanding of Conv LSTM and its application.
+     - Review of Stefan's paper for deeper insights.
    - Action Items:
-     - [Action Item] - [Responsible Person], [Due Date]
+     - [Sushen] Apply Conv LSTM understanding to the current model, due in two weeks.
 
-2. **[Agenda Item]** - _[Presenter/Lead]_
+2. **Explainable AI and Physics Loss** - _Sushen_
    - Discussion Points:
-     - Point 1
-     - Point 2
+     - Incorporation of explainable AI metrics into the demo.
+     - Comparison between physics parameters and neural network parameters.
+     - Implementation strategies for physics loss in PINNs.
    - Action Items:
-     - [Action Item] - [Responsible Person], [Due Date]
+     - [Sushen] Implement explainable AI metrics, due next meeting.
+     - [Sushen] Prepare an ablation study on physics loss vs neural network loss, due in three weeks.
+
+3. **Research Proposal and Background Reading** - _Sushen_
+   - Discussion Points:
+     - Outline for the research proposal.
+     - Background reading on PINNs in weather forecasting.
+   - Action Items:
+     - [Sushen] Draft the research proposal, due in one month.
+     - [Sushen] Compile a summary of relevant literature, ongoing.
 
 ## Decisions Made
 
-- [Decision 1]: [Brief description of the decision, who made it, and any relevant details]
-- [Decision 2]: [Brief description of the decision, who made it, and any relevant details]
+- Focus will be on understanding and implementing explainable AI metrics within the project.
+- Sushen will conduct an in-depth study on the application of physics loss in PINNs.
 
 ## Action Items
 
-- [ ] **[Action Item 1]:** [Responsible Person] - [Due Date]
-- [ ] **[Action Item 2]:** [Responsible Person] - [Due Date]
+- [ ] **Apply Conv LSTM insights:** Sushen - Due in two weeks.
+- [ ] **Implement explainable AI metrics:** Sushen - Due by next meeting.
+- [ ] **Prepare ablation study on physics loss:** Sushen - Due in three weeks.
+- [ ] **Draft research proposal:** Sushen - Due in one month.
+- [ ] **Compile literature summary:** Sushen - Ongoing.
 
 ## Additional Notes
 
-- [Any additional information discussed during the meeting, or observations noted by the attendees or facilitator.]
+- Discussion emphasized the importance of bridging the gap between theoretical knowledge and practical application, especially in terms of physics-informed neural networks.
 
 ## Next Meeting
 
-- **Date:** YYYY-MM-DD
-- **Time:** HH:MM AM/PM
-- **Location:** [Location or Link]
-- **Agenda:** [Brief overview of what will be covered in the next meeting]
+- **Date:** To be decided.
+- **Time:** To be decided.
+- **Location:** Virtual Meeting (Zoom)
+- **Agenda:** Review progress on action items and adjust project direction as necessary.

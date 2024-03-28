@@ -1,55 +1,51 @@
-# Meeting Minutes for [Meeting Title]
+# Meeting Minutes for Finalizing Next Steps in PhysNet-RadarNowcast
 
 ## Meeting Details
 
-- **Date:** YYYY-MM-DD
-- **Time:** HH:MM AM/PM - HH:MM AM/PM
-- **Location:** [Meeting Location or Virtual Meeting Link]
-- **Facilitator:** [Name of the Meeting Facilitator]
-- **Note Taker:** [Name of the person taking notes]
+- **Date:** 2024-03-28
+- **Time:** 9:00 AM - 10:00 AM
+- **Location:** Virtual Meeting (Zoom)
+- **Facilitator:** Stefan
+- **Note Taker:** Sushen
 
 ## Attendees
 
 - Present:
-  - [Name] - [Role or Department]
-  - [Name] - [Role or Department]
+  - Sushen - Student/Researcher
+  - Stefan -  Research scientist/Lead
 - Apologies:
-  - [Name] - [Role or Department]
-  - [Name] - [Role or Department]
+  - IS - Module Convener
 
 ## Agenda Items
 
-1. **[Agenda Item]** - _[Presenter/Lead]_
+1. **Recap of Previous Discussions and Progress** - _Sushen_
    - Discussion Points:
-     - Point 1
-     - Point 2
+     - Update on the exploration of different NAS parameters, loss functions, and accuracy calculations.
+     - Current status of understanding and implementing Conv LSTM.
    - Action Items:
-     - [Action Item] - [Responsible Person], [Due Date]
+     - [Sushen] To finalize the selection of NAS parameters and loss functions, due by next meeting.
 
-2. **[Agenda Item]** - _[Presenter/Lead]_
+2. **Next Steps for Research and Implementation** - _Sushen_
    - Discussion Points:
-     - Point 1
-     - Point 2
+     - Outline of tasks to be completed for the next phase of research.
    - Action Items:
-     - [Action Item] - [Responsible Person], [Due Date]
+     - [Sushen] Specific action items were not listed but could involve further exploration and implementation based on the discussions.
 
 ## Decisions Made
 
-- [Decision 1]: [Brief description of the decision, who made it, and any relevant details]
-- [Decision 2]: [Brief description of the decision, who made it, and any relevant details]
+- The meeting primarily focused on recapping progress and planning for the next steps, with an emphasis on deepening the research and practical application of the discussed methodologies.
 
 ## Action Items
 
-- [ ] **[Action Item 1]:** [Responsible Person] - [Due Date]
-- [ ] **[Action Item 2]:** [Responsible Person] - [Due Date]
+- [ ] **Finalize NAS parameters and loss functions selection:** Sushen - Due by next meeting.
 
 ## Additional Notes
 
-- [Any additional information discussed during the meeting, or observations noted by the attendees or facilitator.]
+- The meeting underscored the importance of iterative review and adaptation of the project strategy to incorporate new findings and technologies.
 
 ## Next Meeting
 
-- **Date:** YYYY-MM-DD
-- **Time:** HH:MM AM/PM
-- **Location:** [Location or Link]
-- **Agenda:** [Brief overview of what will be covered in the next meeting]
+- **Date:** To be decided.
+- **Time:** To be decided.
+- **Location:** Virtual Meeting (Zoom)
+- **Agenda:** To review the finalized selections and discuss further advancements.

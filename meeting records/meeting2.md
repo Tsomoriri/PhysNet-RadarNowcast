@@ -1,55 +1,35 @@
-# Meeting Minutes for [Meeting Title]
+# Meeting Minutes for Progress Update and Next Steps
 
 ## Meeting Details
 
-- **Date:** YYYY-MM-DD
-- **Time:** HH:MM AM/PM - HH:MM AM/PM
-- **Location:** [Meeting Location or Virtual Meeting Link]
-- **Facilitator:** [Name of the Meeting Facilitator]
-- **Note Taker:** [Name of the person taking notes]
+- **Date:** 2024-02-19
+- **Time:** 3:00 PM - 4:30 PM
+- **Location:** Virtual Meeting (Zoom)
+- **Facilitator:** stefan
+- **Note Taker:** Sushen
 
 ## Attendees
 
 - Present:
-  - [Name] - [Role or Department]
-  - [Name] - [Role or Department]
+  - Sushen - Student/Researcher
+  - Stefan - Research scientist/Lead
+  
 - Apologies:
-  - [Name] - [Role or Department]
-  - [Name] - [Role or Department]
+  - IS - Module Convener
 
 ## Agenda Items
 
-1. **[Agenda Item]** - _[Presenter/Lead]_
+1. **2D Advection Discussion** - _Sushen_
    - Discussion Points:
-     - Point 1
-     - Point 2
+     - Presentation of the initial approach to 2D advection for the project.
+     - Discussion on the methodologies and outcomes expected.
    - Action Items:
-     - [Action Item] - [Responsible Person], [Due Date]
-
-2. **[Agenda Item]** - _[Presenter/Lead]_
-   - Discussion Points:
-     - Point 1
-     - Point 2
-   - Action Items:
-     - [Action Item] - [Responsible Person], [Due Date]
+     - [Sushen] Implement 2D advection as part of the project's initial phase, to be completed before the next meeting.
 
 ## Decisions Made
 
-- [Decision 1]: [Brief description of the decision, who made it, and any relevant details]
-- [Decision 2]: [Brief description of the decision, who made it, and any relevant details]
+- Sushen to proceed with the implementation of 2D advection, recognizing it as a critical component of the radar nowcasting project.
 
 ## Action Items
 
-- [ ] **[Action Item 1]:** [Responsible Person] - [Due Date]
-- [ ] **[Action Item 2]:** [Responsible Person] - [Due Date]
-
-## Additional Notes
-
-- [Any additional information discussed during the meeting, or observations noted by the attendees or facilitator.]
-
-## Next Meeting
-
-- **Date:** YYYY-MM-DD
-- **Time:** HH:MM AM/PM
-- **Location:** [Location or Link]
-- **Agenda:** [Brief overview of what will be covered in the next meeting]
+- [ ] **Implement 2D Advection:** Sushen - Due by the next meeting (15
