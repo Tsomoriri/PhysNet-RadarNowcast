@@ -36,4 +36,8 @@ things to do:
 - research paper acm style summary- of what i need to do
 - background reading on how PINNs are used in weather forecasting
 
+-----------------------------------------------------------
+meeting with stefan 28/03/2024
 
+things to do:
+- 
