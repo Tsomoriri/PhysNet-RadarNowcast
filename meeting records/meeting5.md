@@ -45,6 +45,8 @@
 - [ ]  experiments table with graphs (0-1)
 - [ ]  nvidia modulus and different styles of implementation.
 - [ ]  spatio temporal thing vs convolutional network
+- [ ] **Add logging to the experiments:** Sushen - Due by next meeting.
+- [ ] **Simple conv LSTM with 2 ways of adding physics** Sushen - Due by next meeting.
 
 ## Additional Notes
 
