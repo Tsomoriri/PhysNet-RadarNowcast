@@ -2,8 +2,8 @@
 
 ## Meeting Details
 
-- **Date:** 2024-04-23
-- **Time:** 03:00 PM - 03:45 PM
+- **Date:** 2024-05-16
+- **Time:** 11:30 AM - 12:00 PM
 - **Location:** G1
 - **Facilitator:** IS
 - **Note Taker:** Sushen
@@ -20,9 +20,9 @@
 
 1. **Recap of Previous Discussions and Progress** - _Sushen_
    - Discussion Points:
-     - Write the research proposal draft
+     - Discuss Implementation details
    - Action Items:
-      - [Sushen] write research proposal draft
+      - [Sushen] 
 
 
 2.  -
