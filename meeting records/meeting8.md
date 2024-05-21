@@ -2,9 +2,9 @@
 
 ## Meeting Details
 
-- **Date:** 2024-05-16
-- **Time:** 11:30 AM - 12:00 PM
-- **Location:** G1
+- **Date:** 2024-05-21
+- **Time:** 11:00 AM - 11:30 AM
+- **Location:** online
 - **Facilitator:** IS
 - **Note Taker:** Sushen
 
@@ -22,23 +22,33 @@
    - Discussion Points:
      - Discuss Implementation details
    - Action Items:
-      - [Sushen] 
+      - [Sushen] Write-up all the things in 2 documents:  
+                    - paper format short
+                    - Log of everything
+      - Add tables and figures to it.
+      - dynamic grid, look into  features that are important.               
+
 
 
 2.  -
 ## Decisions Made
-
+- Writing is essential next step for the project.
+- collate results
 
 
 ## Action Items
-- 
+- Write-up all the things in 2 documents:  
+                    - paper format short
+                    - Log of everything
+- Add tables and figures to it.
+- dynamic grid, look into  features that are important.    
 
 ## Additional Notes
 
 
 ## Next Meeting
 
-- **Date:** To be decided.
+- **Date:** first week of june.
 - **Time:** To be decided.
 - **Location:** Virtual Meeting (Zoom)
-- **Agenda:** To review the finalized selections and discuss further advancements.
+- **Agenda:** Discuss next steps wrt write-up.
