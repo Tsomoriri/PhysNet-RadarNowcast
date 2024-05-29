@@ -34,7 +34,8 @@
 - [sushen] Explore and implement ViT
 - something with attention mechanism
 - add diffusion and continuity to the FCN,ConvLSTM,Unet
-- Velocity field with different velocities in a field for different objects in the field.  
+- Velocity field with different velocities in a field for different objects in the field.
+- Essentially each 40x40 has a differrent velocity. Hint: use a field vector to define a layer where velocity is different at each point.  
 
 ## Additional Notes
 
