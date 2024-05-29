@@ -2,7 +2,7 @@
 
 ## Meeting Details
 
-- **Date:** 2024-04-24
+- **Date:** 2024-04-29
 - **Time:** 01:00 PM - 01:30 PM
 - **Location:** online
 - **Facilitator:** Stefan
@@ -31,7 +31,10 @@
 
 
 ## Action Items
-- 
+- [sushen] Explore and implement ViT
+- something with attention mechanism
+- add diffusion and continuity to the FCN,ConvLSTM,Unet
+- Velocity field with different velocities in a field for different objects in the field.  
 
 ## Additional Notes
 
