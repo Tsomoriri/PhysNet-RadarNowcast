@@ -26,6 +26,61 @@ class synData:
                 result += np.exp(-100 * ((x - center_x) ** 2 + (y - center_y) ** 2))
         elif self.ictype == 'normal':
             return np.exp(-100 * (x - 0.2) ** 2) * np.exp(-100 * (y - 0.2) ** 2)  # gaussian wave
+<<<<<<< HEAD
+=======
+        elif self.ictype == 'rect':
+            result = np.zeros_like(x)
+
+            # Define the rectangle boundaries
+            x_min, x_max = 0.4, 0.438
+            y_min, y_max = 0.4, 0.438
+
+            # Create masks for the rectangle
+            x_mask = (x >= x_min) & (x <= x_max)
+            y_mask = (y >= y_min) & (y <= y_max)
+
+            # Create gradients within the rectangle
+            x_gradient = (x - x_min) / (x_max - x_min)
+            y_gradient = (y - y_min) / (y_max - y_min)
+
+            # Combine gradients and apply to the rectangle
+            gradient = np.exp(x_gradient * y_gradient)
+            result[x_mask & y_mask] = gradient[x_mask & y_mask]
+
+        elif self.ictype == '5rect':
+            result = np.zeros_like(x)
+
+            for _ in range(n_blobs):
+                # Randomly position the rectangle
+                x_min = np.random.uniform(0, 0.962)
+                y_min = np.random.uniform(0, 0.962)
+
+                # Fixed size for each blob
+                width = 0.038
+                height = 0.038
+
+                x_max = x_min + width
+                y_max = y_min + height
+
+                # Create masks for the rectangle
+                x_mask = (x >= x_min) & (x <= x_max)
+                y_mask = (y >= y_min) & (y <= y_max)
+
+                # Create gradients within the rectangle
+                x_gradient = (x - x_min) / (x_max - x_min)
+                y_gradient = (y - y_min) / (y_max - y_min)
+
+                # Combine gradients and apply exponential
+                gradient = np.exp(x_gradient * y_gradient)
+
+                # Apply the gradient to the rectangle
+                result[x_mask & y_mask] += gradient[x_mask & y_mask]
+
+            # Normalize the result to be between 0 and 1
+            if np.max(result) > 0:
+                result = result / np.max(result)
+
+>>>>>>> 8e09006 (resolved git lfs error)
         return result
     def generate_training_data(self):
         xr = np.linspace(0, 1, self.x)
@@ -59,6 +114,7 @@ class synData:
     def u_2d_true(self, x, y, t):
         return self.u0(x - self.mux * t, y - self.muy * t)
 
+<<<<<<< HEAD
     def plot_data(self, xrmesh, yrmesh, rout_data2):
         plt.contourf(xrmesh[:, :, 0], yrmesh[:, :, 0], rout_data2[:, :, 0])
         plt.xlabel('X')
@@ -67,4 +123,57 @@ class synData:
         plt.colorbar()
         plt.colorbar()
         plt.show()
+=======
+    def generate_movie(self, n_frames=980, nx=40, ny=40, nt=20):
+        random.seed(23)
+        movie = np.zeros((n_frames, nx, ny, nt))
+
+        x = np.linspace(0, 1, nx)
+        y = np.linspace(0, 1, ny)
+        t = np.linspace(0, 1, nt)
+        x_mesh, y_mesh = np.meshgrid(x, y)
+
+        for frame in range(n_frames):
+            # Determine which velocity type to use for this frame
+            rand_num = random.random()
+
+            if rand_num < 0.4:  # 40% randomly generated velocity
+                mux = random.uniform(0, 1)
+                muy = random.uniform(0, 1)
+            elif rand_num < 0.8:  # 40% constant velocity
+                mux = muy = random.uniform(0, 1)
+            else:  # 20% exponentially increasing and decreasing velocity
+                base_velocity = random.uniform(0, 1)
+                mux = muy = lambda t: base_velocity * np.exp(np.sin(2 * np.pi * t))
+
+            for i in range(nt):
+                if callable(mux):
+                    current_mux = mux(t[i])
+                    current_muy = muy(t[i])
+                else:
+                    current_mux = mux
+                    current_muy = muy
+
+                movie[frame, :, :, i] = self.u_2d_true(
+                    x_mesh - current_mux * t[i],
+                    y_mesh - current_muy * t[i],
+                    t[i]
+                )
+
+        return movie
+
+    def save_movie(self, movie, filename):
+        np.save(filename, movie)
+
+    def plot_data(self, xrmesh, yrmesh, rout_data2):
+
+        for t in range(2):
+            plt.contourf(xrmesh[:, :, t], yrmesh[:, :, t], rout_data2[:, :, t])
+            plt.xlabel('X')
+            plt.ylabel('Y')
+            plt.title(f'Initial State with  Blobs (torch) at t=0')
+            plt.colorbar()
+            plt.colorbar()
+            plt.show()
+>>>>>>> 8e09006 (resolved git lfs error)
 
