@@ -1,5 +1,4 @@
 from src.data_process.synthetic_data import synData
-<<<<<<< HEAD
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -53,7 +52,7 @@ plt.title('Distribution at t=0 (Power Transformed)')
 plt.legend()
 
 plt.show()
-=======
+
 import matplotlib.animation as animation
 import numpy as np
 import matplotlib.pyplot as plt
@@ -180,4 +179,4 @@ plt.imshow(y_train[i_plt,:,:,0])
 plt.title('target output')
 plt.axis('off')
 plt.show()
->>>>>>> 8e09006 (resolved git lfs error)
+

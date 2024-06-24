@@ -26,8 +26,7 @@ class synData:
                 result += np.exp(-100 * ((x - center_x) ** 2 + (y - center_y) ** 2))
         elif self.ictype == 'normal':
             return np.exp(-100 * (x - 0.2) ** 2) * np.exp(-100 * (y - 0.2) ** 2)  # gaussian wave
-<<<<<<< HEAD
-=======
+
         elif self.ictype == 'rect':
             result = np.zeros_like(x)
 
@@ -80,7 +79,7 @@ class synData:
             if np.max(result) > 0:
                 result = result / np.max(result)
 
->>>>>>> 8e09006 (resolved git lfs error)
+
         return result
     def generate_training_data(self):
         xr = np.linspace(0, 1, self.x)
@@ -114,7 +113,6 @@ class synData:
     def u_2d_true(self, x, y, t):
         return self.u0(x - self.mux * t, y - self.muy * t)
 
-<<<<<<< HEAD
     def plot_data(self, xrmesh, yrmesh, rout_data2):
         plt.contourf(xrmesh[:, :, 0], yrmesh[:, :, 0], rout_data2[:, :, 0])
         plt.xlabel('X')
@@ -123,7 +121,7 @@ class synData:
         plt.colorbar()
         plt.colorbar()
         plt.show()
-=======
+
     def generate_movie(self, n_frames=980, nx=40, ny=40, nt=20):
         random.seed(23)
         movie = np.zeros((n_frames, nx, ny, nt))
@@ -175,5 +173,5 @@ class synData:
             plt.colorbar()
             plt.colorbar()
             plt.show()
->>>>>>> 8e09006 (resolved git lfs error)
+
 
