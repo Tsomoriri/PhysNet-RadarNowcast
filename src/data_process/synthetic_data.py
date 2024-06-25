@@ -4,7 +4,7 @@ import torch
 import matplotlib.pyplot as plt
 import random
 class synData:
-    def __init__(self,x,y,t,pde,mux,muy,ictype='gaussian'):
+    def __init__(self,x,y,t,pde,mux,muy,ictype='gaussian',n_blobs=5):
         self.x = x
         self.y = y
         self.t = t
@@ -12,15 +12,16 @@ class synData:
         self.mux = mux
         self.muy = muy
         self.ictype = ictype
+        self.n_blobs = n_blobs
         random.seed(23)
     # def u0(self,x):
     #     return np.exp(-100 * (x - 0.2) ** 2)  # gaussian wave
     #
 
-    def u0(self, x, y, n_blobs=5):
+    def u0(self, x, y):
         if self.ictype == 'random':
             result = np.zeros_like(x)
-            for _ in range(n_blobs):
+            for _ in range(self.n_blobs):
                 center_x = random.random()
                 center_y = random.random()
                 result += np.exp(-100 * ((x - center_x) ** 2 + (y - center_y) ** 2))
@@ -46,10 +47,10 @@ class synData:
             gradient = np.exp(x_gradient * y_gradient)
             result[x_mask & y_mask] = gradient[x_mask & y_mask]
 
-        elif self.ictype == '5rect':
+        elif self.ictype == '3rect':
             result = np.zeros_like(x)
 
-            for _ in range(n_blobs):
+            for _ in range(self.n_blobs):
                 # Randomly position the rectangle
                 x_min = np.random.uniform(0, 0.962)
                 y_min = np.random.uniform(0, 0.962)
@@ -159,6 +160,37 @@ class synData:
                 )
 
         return movie
+
+    def generate_ill_movie(self, n_frames=980, nx=40, ny=40, nt=20):
+        random.seed(23)
+        movie = np.zeros((n_frames, nx, ny, nt))
+
+        x = np.linspace(0, 1, nx)
+        y = np.linspace(0, 1, ny)
+        t = np.linspace(0, 1, nt)
+        x_mesh, y_mesh = np.meshgrid(x, y)
+
+        for frame in range(n_frames):
+            # Determine which velocity type to use for this frame
+            rand_num = random.random()
+            base_velocity = random.uniform(0, 1)
+            mux = muy = lambda t: base_velocity * np.exp(np.sin(2 * np.pi * t))
+
+            for i in range(nt):
+                if callable(mux):
+                    current_mux = mux(t[i])
+                    current_muy = muy(t[i])
+                else:
+                    current_mux = mux
+                    current_muy = muy
+
+                movie[frame, :, :, i] = self.u_2d_true(
+                    x_mesh - current_mux * t[i],
+                    y_mesh - current_muy * t[i],
+                    t[i]
+                )
+        return movie
+
 
     def save_movie(self, movie, filename):
         np.save(filename, movie)

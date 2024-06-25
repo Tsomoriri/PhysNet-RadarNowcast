@@ -120,63 +120,20 @@ syn_data = synData(x=40, y=40, t=20, pde='advection', mux=0.5, muy=0.5, ictype='
 # Generate and save rect movie
 rect_movie = syn_data.generate_movie()
 syn_data.save_movie(rect_movie, 'rect_movie.npy')
+rect_movie = syn_data.generate_ill_movie()
+syn_data.save_movie(rect_movie, 'ill_movie.npy')
 
-# Generate and save 5rect movie
-five_rect_movie = syn_data.generate_movie()
-syn_data.save_movie(five_rect_movie, '5rect_movie.npy')
+# Generate and save 3rect movie
+syn_data = synData(x=40, y=40, t=20, pde='advection', mux=0.5, muy=0.5, ictype='3rect',n_blobs=3)
+rect_movie = syn_data.generate_movie()
+syn_data.save_movie(rect_movie, '3rect_movie.npy')
+rect_movie = syn_data.generate_ill_movie()
+syn_data.save_movie(rect_movie, '3ill_movie.npy')
 
-movies = np.load('/home/sushen/PhysNet-RadarNowcast/tests/rect_movie.npy')
-movies.shape # (980, 40, 40, 20) -- here each movie is of length 20
-
-# in our model we will use the first four images as inputs and predict the
-# fifth image
-x = movies[:, :, :,  :4]
-y = movies[:, :, :, 4:5]
-
-
-# function: animation of a sequence of radar data (shape = nx,ny,ntime)
-def animate(x):
-  fig, ax = plt.subplots()
-  vmax = np.max(x)
-  im = ax.imshow(x[:,:,0], vmin=0, vmax=vmax)
-  fig.colorbar(im)
-  plt.axis('off')
-  def anim_(i):
-      im.set_data(x[:,:,i])
-      ax.set_title(str(i+1) + '/' + str(x.shape[2]))
-  anim = animation.FuncAnimation(
-      fig, anim_, interval=300, frames=x.shape[2], repeat_delay=1000)
-  plt.show()
-
-# i_plt = 340
-# i_plt = 123
-i_plt = np.int32(np.random.sample() * movies.shape[0])
-animate(x[i_plt,:,:,:])
-plt.show()
-
-# train validate test split
-tvt = np.tile(['train','train','train','validate','test'], y.shape[0])[:y.shape[0]]
-x_train = x[np.where(tvt == 'train')]
-y_train = y[np.where(tvt == 'train')]
-x_validate = x[np.where(tvt == 'validate')]
-y_validate = y[np.where(tvt == 'validate')]
-x_test = x[np.where(tvt == 'test')]
-y_test = y[np.where(tvt == 'test')]
-
-n_test = x_test.shape[0]
-i_plt = np.int32(np.random.sample() * n_test)
-true = np.append(x_test[i_plt,:,:,:], y_test[i_plt,:,:,:], axis=2)
-# plot an input/output pair
-i_plt = 20
-i_plt = np.int32(np.random.sample() * x_train.shape[0])
-for jj in range(4):
-  plt.subplot(1,5,jj+1)
-  plt.imshow(x_train[i_plt,:,:,jj])
-  plt.axis('off')
-  plt.title('input')
-plt.subplot(1,5,5)
-plt.imshow(y_train[i_plt,:,:,0])
-plt.title('target output')
-plt.axis('off')
-plt.show()
+# Generate and save 11rect movie
+syn_data = synData(x=40, y=40, t=20, pde='advection', mux=0.5, muy=0.5, ictype='3rect',n_blobs=11)
+rect_movie = syn_data.generate_movie()
+syn_data.save_movie(rect_movie, '11rect_movie.npy')
+rect_movie = syn_data.generate_ill_movie()
+syn_data.save_movie(rect_movie, '11ill_movie.npy')
 

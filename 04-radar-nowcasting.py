@@ -17,7 +17,7 @@ from matplotlib import pyplot as plt
 import matplotlib.animation as animation
 
 # load radar data
-movies = np.load('data/radar_movies.npy')
+movies = np.load('src/datasets/radar_movies.npy')
 movies.shape # (980, 40, 40, 20) -- here each movie is of length 20
 
 # in our model we will use the first four images as inputs and predict the
