@@ -29,6 +29,7 @@ class TrainEvalManager:
 
     def load_data(self, path):
         data = np.load(path)
+
         x = data[:, :, :, :4]
         y = data[:, :, :, 4:5]
         x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
@@ -36,6 +37,7 @@ class TrainEvalManager:
         test_dataset = TensorDataset(torch.from_numpy(x_test).float(), torch.from_numpy(y_test).float())
         train_loader = DataLoader(train_dataset, batch_size=self.batch_size, shuffle=True)
         test_loader = DataLoader(test_dataset, batch_size=self.batch_size, shuffle=False)
+
         return train_loader, test_loader
 
     def train_model(self, model, train_loader, optimizer, loss_fn, scheme):
@@ -143,9 +145,9 @@ class TrainEvalManager:
         print(f"Comparison GIF saved as {filename}")
         plt.close(fig)
 
-    def run_experiment(self, model_config, dataset_path, experiment_name):
+    def run_experiment(self, model_config, train_dataset_path, test_dataset_paths, experiment_name):
         model_name, model_class, model_params, training_schemes = model_config
-        train_loader, test_loader = self.load_data(dataset_path)
+        train_loader,_ = self.load_data(train_dataset_path)
 
         results = []
 
@@ -155,48 +157,50 @@ class TrainEvalManager:
             optimizer = optim.Adam(model.parameters(), lr=self.learning_rate)
             loss_fn = nn.MSELoss()
 
-            print(f"Training {model_name} with {scheme} scheme on {dataset_path}")
+            print(f"Training {model_name} with {scheme} scheme on {os.path.basename(train_dataset_path)}")
             for epoch in range(self.num_epochs):
                 train_loss = self.train_model(model, train_loader, optimizer, loss_fn, scheme)
                 if (epoch + 1) % 5 == 0:
-                    print(f"Epoch {epoch+1}/{self.num_epochs}, Loss: {train_loss:.4f}")
+                    print(f"Epoch {epoch + 1}/{self.num_epochs}, Loss: {train_loss:.4f}")
 
-            # Evaluate immediately after training
-            test_loss, mae, ssim_value, outputs, targets = self.evaluate_model(model, test_loader)
-            print(f"Test Loss: {test_loss:.4f}, MAE: {mae:.4f}, SSIM: {ssim_value:.4f}")
+            # Evaluate on each test dataset
+            for test_dataset_path in test_dataset_paths:
+                _,test_loader = self.load_data(test_dataset_path)
+                test_loss, mae, ssim_value, outputs, targets = self.evaluate_model(model, test_loader)
+                print(f"Test on {os.path.basename(test_dataset_path)}:")
+                print(f"Test Loss: {test_loss:.4f}, MAE: {mae:.4f}, SSIM: {ssim_value:.4f}")
 
-            results.append({
-                'model': model_name,
-                'scheme': scheme,
-                'dataset': os.path.basename(dataset_path),
-                'test_loss': test_loss,
-                'mae': mae,
-                'ssim': ssim_value
-            })
+                results.append({
+                    'model': model_name,
+                    'scheme': scheme,
+                    'train_dataset': os.path.basename(train_dataset_path),
+                    'test_dataset': os.path.basename(test_dataset_path),
+                    'test_loss': test_loss,
+                    'mae': mae,
+                    'ssim': ssim_value
+                })
 
-            # Create and save comparison GIF
-            gif_filename = os.path.join(self.results_dir, f'{experiment_name}_{model_name}_{scheme}_comparison.gif')
-            self.create_comparison_gif(outputs, targets, gif_filename)
-            print(f"Comparison GIF saved as {gif_filename}")
-
-        # Save experiment results
-        result_file = os.path.join(self.results_dir, f'{experiment_name}_results.txt')
-        with open(result_file, 'w') as f:
-            for result in results:
-                f.write(f"Model: {result['model']}\n")
-                f.write(f"Scheme: {result['scheme']}\n")
-                f.write(f"Dataset: {result['dataset']}\n")
-                f.write(f"Test Loss: {result['test_loss']}\n")
-                f.write(f"MAE: {result['mae']}\n")
-                f.write(f"SSIM: {result['ssim']}\n\n")
-
-        print(f"Experiment '{experiment_name}' completed. Results saved in {result_file}")
-
+                # Create and save comparison GIF
+                gif_filename = os.path.join(self.results_dir,
+                                            f'{experiment_name}_{model_name}_{scheme}_{os.path.basename(test_dataset_path)}_comparison.gif')
+                self.create_comparison_gif(outputs, targets, gif_filename)
+                print(f"Comparison GIF saved as {gif_filename}")
     def run_all_experiments(self):
         for dataset_config in self.datasets_config:
             dataset_path, experiment_name = dataset_config
             for model_config in self.models_config:
                 self.run_experiment(model_config, dataset_path, experiment_name)
+
+    def run_extrapolation_experiment(self):
+        train_dataset_path = "/home/sushen/PhysNet-RadarNowcast/src/datasets/rect_movie.npy"
+        test_dataset_paths = [
+            "/home/sushen/PhysNet-RadarNowcast/src/datasets/3rect_movie.npy",
+            "/home/sushen/PhysNet-RadarNowcast/src/datasets/11rect_movie.npy"
+        ]
+        experiment_name = "train_1rect_test_3_11rect"
+
+        for model_config in self.models_config:
+            self.run_experiment(model_config, train_dataset_path, test_dataset_paths, experiment_name)
 
 def main():
     # Define your models
@@ -217,13 +221,15 @@ def main():
 
     # Define your datasets
     datasets_config = [
-        ("/home/sushen/PhysNet-RadarNowcast/src/datasets/rect_movie.npy", "Rectangle_whole"),
-        ("/home/sushen/PhysNet-RadarNowcast/src/datasets/radar_movies.npy", "Radar_data"),
+        ("/home/sushen/PhysNet-RadarNowcast/src/datasets/3rect_movie.npy", "3_rectangles"),
+        ("/home/sushen/PhysNet-RadarNowcast/src/datasets/11rect_movie.npy", "11_rectangles"),
+        ("/home/sushen/PhysNet-RadarNowcast/src/datasets/3rect_movie.npy", "1_rectangles"),
+        ("/home/sushen/PhysNet-RadarNowcast/src/datasets/radar_movies.npy", "Radar_movies")
         # Add more datasets as needed
     ]
 
     manager = TrainEvalManager(models_config, datasets_config)
-    manager.run_all_experiments()
+    manager.run_extrapolation_experiment()
 
 if __name__ == "__main__":
     main()
